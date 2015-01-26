@@ -1,0 +1,67 @@
+#include <stdio.h>
+
+int main()
+{
+	int n=0;
+	int m=0;
+	int x=2;//用于遍历整数
+	int y=2;
+	int cnt1=0;//用于计数 
+	int cnt2=0;
+	int i=2;//做循环使用
+	int j=2;
+	int sum1=0;//素数和
+	int sum2=0;
+	
+	scanf("%d %d",&n,&m);
+	if(n>0&&n<=m&&m<=200)
+	{
+		while(cnt1<n)
+		{
+			int isPrime1=1;//判断n是素数,放在这里每次都会回归1
+			
+			for (i=2;i<x;i++)
+			{
+				if(x%i==0)
+				{
+					isPrime1=0;
+					break;//只要当x%i==0时就跳出循环，而不会继续循环下去 
+				}
+			}
+			 if(isPrime1==1)
+			 {
+			 	sum1 += x;
+			 	cnt1++;
+			 }
+			 x++;
+		}
+		
+		while(cnt2<m)//仿照上述方式重复计算出前m个素数和
+		{
+			int isPrime2=1;
+			
+			for (j=2;j<y;j++)
+			{
+				if(y%j==0)
+				{
+					isPrime2=0;
+					break;
+				}
+			}
+			 if(isPrime2==1)
+			 {
+			 	sum2 += y;
+			 	cnt2++;
+			 }
+			 y++;
+		}
+	
+		printf("%d\n",sum2-sum1+x-1);//因为题目要求包含第m和第n个素数和，所以加上x，因为之前有X++，所以要-1 
+	}
+	else
+	{
+		printf("您输入的数字有误！请输入（0，200]之内的数。"); 
+	}
+
+	return 0;
+ } 
