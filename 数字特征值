@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+	int n=0;//原始数据
+	int i=0;
+	int m=0;//取出每位数字
+	int a=0;//用于判断位数与位数上的数字奇偶关系
+	int x=0;//特征值
+	
+	printf("请输入一个数字：\n");
+	scanf("%d",&n);
+	
+	if(n>=0&&n<=1000000)
+	{
+		for(i=1;i<7;i++)
+		{
+			m=n%10;
+			if(n!=0)
+			{
+				if((m%2==0&&i%2==0)||(m%2==1&&i%2==1))
+				a=1;
+				else
+				a=0;
+				
+				x += a*pow(2,i-1);//指数表达式 
+				
+				n=n/10;	
+			}	
+		}	
+		printf("%d\n",x);
+	}
+	else
+	printf("您输入的数字有误，请输入一个[0，1000000]的数字！\n");
+ } 
